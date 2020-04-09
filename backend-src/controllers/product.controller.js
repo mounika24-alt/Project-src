@@ -42,12 +42,15 @@ exports.product_create = function (req, res) {
         res.send('Product Created successfully')
     })
 
+    //exp
+
+    /*
     exports.product_details = function (req, res) {
         product.findById(req.params.phone, function (err, product) {
             if (err) return next(err);
             res.send(product);
         })
     };
-
+*/
 
 };

@@ -10,5 +10,10 @@ router.get('/test', product_controller.test);
 router.post('/create', product_controller.product_create);
 //router.get('/:id', product_controller.product_details);
 
+//exp
+
 console.log("route hit");
 module.exports = router;
+
+
+

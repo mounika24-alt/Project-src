@@ -23,6 +23,23 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App {
+  text-align: center;
+}
+.option {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+.options-container {
+  display: flex;
+  flex-direction: row;
+}
 
 .App-link {
   color: #61dafb;

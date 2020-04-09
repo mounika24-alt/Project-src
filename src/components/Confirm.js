@@ -9,21 +9,20 @@ export class Confirm extends Component {
     continue = e => {
         e.preventDefault();
         //process form//
-        axios.get('http://localhost:3000/')
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error.response);
-    console.log(error.response.data);
-    console.log(error.message)
-  });
+        
 
         this.props.nextStep();
     }
     render() {
-        const {values:{firstName,email,mobileNumber,education,parentsMobile,linkedIn,f,s,t,fo,fi,track,project,intern}}=this.props;
-      
+        // const {values:{firstName,email,mobileNumber,education,parentsMobile,linkedIn,selected1,selected2,selected3,track,project,intern}}=this.props;
+        const {values:{firstName,email,mobileNumber,education,parentsMobile,linkedIn,selected1,selected2,selected3,track,project,intern}}=this.props;
+
+        axios
+        .post('http://localhost:3001/Confirm')
+        .then(() => console.log('Book Created'))
+        .catch(err => {
+          console.error(err);
+        });
         return (
             <MuiThemeProvider>
 <React.Fragment>
@@ -33,10 +32,51 @@ export class Confirm extends Component {
         primaryText="First Name"
         secondaryText={firstName}
     />
-      <ListItem
-        primaryText="rate"
-        secondaryText={f}
+    <ListItem
+        primaryText="email"
+        secondaryText={email}
     />
+    <ListItem
+        primaryText="mobileNumber"
+        secondaryText={mobileNumber}
+    />
+    <ListItem
+        primaryText="education"
+        secondaryText={education}
+    />
+    <ListItem
+        primaryText="parentsMobile"
+        secondaryText={parentsMobile}
+    />
+    <ListItem
+        primaryText="linkedIn"
+        secondaryText={linkedIn}
+    />
+     <ListItem
+        primaryText="radiobutton1"
+        secondaryText={selected1}
+    />
+     <ListItem
+        primaryText="radiobutton1"
+        secondaryText={selected2}
+    />
+     <ListItem
+        primaryText="radiobutton1"
+        secondaryText={selected3}
+    />
+     <ListItem
+        primaryText="track"
+        secondaryText={track}
+    />
+     <ListItem
+        primaryText="project"
+        secondaryText={project}
+    />
+     <ListItem
+        primaryText="intern"
+        secondaryText={intern}
+    />
+     
   
 </List>
     <RaisedButton 

@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-  import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import BeautyStars from "beauty-stars";
-import { RadioGroup, RadioButton,ReversedRadioButton } from 'react-radio-buttons'
+ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+ import AppBar from 'material-ui/AppBar';   import TextField from 'material-ui/TextField';
+ import RaisedButton from 'material-ui/RaisedButton';
+ import BeautyStars from "beauty-stars";
+ import { RadioGroup, RadioButton,ReversedRadioButton } from 'react-radio-buttons'
 
-export class YourSkills extends Component {
-    continue = e => {
+ import { FormControl,FormControlLabel,FormLabel,Radio } from '@material-ui/core';
+import ReactRadioGroup from 'react-simple-radio-button'
+export class YourSkills extends React.Component {
+  // state = { selected1: "", 
+  // selected2: "", 
+  // selected3: ""};
+  // handleChange1 = ev => {
+  //   this.setState({ selected1: ev.target.value });
+  // };
+  // handleChange2 = ev => {
+  //   this.setState({ selected2: ev.target.value });
+  // };
+  // handleChange3 = ev => {
+  //   this.setState({ selected3: ev.target.value });
+  // };
+      continue = e => {
         e.preventDefault();
         this.props.nextStep();
     }
@@ -16,97 +29,50 @@ export class YourSkills extends Component {
         e.preventDefault();
         this.props.prevStep();
     }
-    state = { value: 0 ,val2:0,val3:0,};
-    render() {
-        const { values, handleChange } = this.props;
+  render() {
+    
+    const { values, handleChange1,handleChange2,handleChange3 } = this.props;
+    return (
+      <MuiThemeProvider>
+      <React.Fragment>
+         <AppBar title="Rate Your Skills" />
+ <p >1) How would you rate your experience and knowledge of eLearning Platforms?</p>
+      <FormControl >
+        <RadioGroup onChange={handleChange1('selected1')} defaultValue={values.selected1}>
+          <FormControlLabel value="Extremelypoor" control={<Radio />} label="Extremely poor"/>
+          <FormControlLabel value="poor" control={<Radio />} label="Poor" />
+          <FormControlLabel value="Good" control={<Radio />} label="Good"/>
+          <FormControlLabel value="Very Good" control={<Radio />} label="Verygood"/>
+          <FormControlLabel value="Excellent" control={<Radio />} label="Excellent"/>
+        </RadioGroup>
+        {/* { "Selected: " } {selected1} */}
+      </FormControl>
+      <p>2) And how would you rate your creativity and ability to find innovative solutions?</p>
+      <FormControl >
+        <RadioGroup onChange={handleChange2('selected2')} defaultValue={values.selected2}>
+          <FormControlLabel value="Extremelypoor" control={<Radio />} label="Extremely poor"/>
+          <FormControlLabel value="poor" control={<Radio />} label="Poor" />
+          <FormControlLabel value="Good" control={<Radio />} label="Good"/>
+          <FormControlLabel value="Very Good" control={<Radio />} label="Verygood"/>
+          <FormControlLabel value="Excellent" control={<Radio />} label="Excellent"/>
+        </RadioGroup>
+        {/* { "Selected: " } {selected2} */}
+      </FormControl>
 
-        return (
-            <MuiThemeProvider>
-                <React.Fragment>
-                    <AppBar title="Rate Your Skills" />
-                  
-                    <p >  
-
-                        
-How would you rate your experience and knowledge of eLearning Platforms? 
-
-</p>
-<RadioGroup onChange={ this.onChange } horizontal>
-  <RadioButton value="apple">
-   Extremely poor
-  </RadioButton>
-  <RadioButton value="apple">
-  Poor
-  </RadioButton>
-  <RadioButton value="orange">
-    Good
-  </RadioButton>
-  <RadioButton value="melon">
-   Very Good
-  </RadioButton>
-  <ReversedRadioButton value="melon">
-    Excellent
-  </ReversedRadioButton>
-</RadioGroup>
-                    
-               
-                   
-                    <br />
-<p>And how would you rate your creativity and ability to find innovative solutions?</p>
-                   
-<RadioGroup horizontal>
-  <RadioButton  onChange={handleChange('f')}
-    defaultValue={values.f}>
-   Extremely poor
-  </RadioButton>
-  <RadioButton onChange={handleChange('s')}
-    defaultValue={values.s}>
-  Poor
-  </RadioButton>
-  <RadioButton onChange={handleChange('t')}
-    defaultValue={values.t}>
-    Good
-  </RadioButton>
-  <RadioButton onChange={handleChange('fo')}
-    defaultValue={values.fo}>
-   Very Good
-  </RadioButton>
-  <ReversedRadioButton onChange={handleChange('fi')}
-    defaultValue={values.fi}>
-    Excellent
-  </ReversedRadioButton>
-</RadioGroup>
-
-                    <br />
-
-                    <p>What about your ability to get things done quickly?</p>
-                   
-<RadioGroup onChange={ this.onChange } horizontal>
-  <RadioButton value="apple">
-   Extremely poor
-  </RadioButton>
-  <RadioButton value="apple">
-  Poor
-  </RadioButton>
-  <RadioButton value="orange">
-    Good
-  </RadioButton>
-  <RadioButton value="melon">
-   Very Good
-  </RadioButton>
-  <ReversedRadioButton value="melon">
-    Excellent
-  </ReversedRadioButton>
-</RadioGroup>
-
-
-                
-                   
-
-       
-                   
-                       <br />
-                    <RaisedButton
+      <p>3) What about your ability to get things done quickly?</p>
+      <FormControl >
+        <RadioGroup onChange={handleChange3('selected3')} defaultValue={values.selected3}>
+          <FormControlLabel value="Extremelypoor" control={<Radio />} label="Extremely poor"/>
+          <FormControlLabel value="poor" control={<Radio />} label="Poor" />
+          <FormControlLabel value="Good" control={<Radio />} label="Good"/>
+          <FormControlLabel value="Very Good" control={<Radio />} label="Verygood"/>
+          <FormControlLabel value="Excellent" control={<Radio />} label="Excellent"/>
+        </RadioGroup>
+        {/* { "Selected: " } {selected3} */}
+      </FormControl>
+      {/*  */}
+      <br/>
+      <RaisedButton
                         label="Continue"
                         primary={true}
                         style={styles.button}
@@ -118,19 +84,19 @@ How would you rate your experience and knowledge of eLearning Platforms?
                         style={styles.button}
                         onClick={this.back}
                     />
+      </React.Fragment>
 
-                </React.Fragment>
+</MuiThemeProvider>
+    );
+  }
 
-            </MuiThemeProvider>
-
-        );
-    }
 }
 const styles = {
-    button: {
-        margin: 15
+  button :{
+      margin: 15
 
-    }
+  }
 }
 
+                  
 export default YourSkills

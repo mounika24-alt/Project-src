@@ -3,7 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 export class AboutYou extends Component {
     continue = e => {
@@ -24,14 +24,21 @@ export class AboutYou extends Component {
     defaultValue={values.firstName}
     />
    <br/>
+   <ValidatorForm
+                ref="form"
+                // onSubmit={this.handleSubmit}
+                onError={errors => console.log(errors)}
+            >
   
-   <TextField 
+   <TextValidator 
     hintText="Enter Your MailId" 
     floatingLabelText="MailID" 
     onChange={handleChange('email')}
     defaultValue={values.email}
+    validators={['required', 'isEmail']}
+    errorMessages={['this field is required', 'email is not valid']}
     />
-  
+   </ValidatorForm>
   <br />
 <TextField 
     hintText="Enter Mobile Number"

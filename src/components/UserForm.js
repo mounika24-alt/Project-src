@@ -13,11 +13,9 @@ export class UserForm extends Component {
         education:'',
         parentsMobile:'',
         linkedIn:'',
-        f:'',
-        s:'',
-        t:'',
-        fo:'',
-        fi:'',
+        selected1:'',
+        selected2:'',
+        selected3:'',
         track:'',
         project:'',
         intern:'',
@@ -44,11 +42,19 @@ export class UserForm extends Component {
 handleChange = input => e =>{
     this.setState({[input]:e.target.value});
 }
-
+handleChange1 = ev => {
+    this.setState({ selected1: ev.target.value });
+  };
+  handleChange2 = ev => {
+    this.setState({ selected2: ev.target.value });
+  };
+  handleChange3 = ev => {
+    this.setState({ selected3: ev.target.value });
+  };
     render() {
         const { step} =this.state;
-        const {firstName,email,mobileNumber,education,parentsMobile,linkedIn,f,s,t,fo,fi,track,project,intern}=this.state;
-        const values = {firstName,email,mobileNumber,education,parentsMobile,linkedIn,f,s,t,fo,fi,track,project,intern}
+        const {firstName,email,mobileNumber,education,parentsMobile,linkedIn,selected1,selected2,selected3,track,project,intern}=this.state;
+        const values = {firstName,email,mobileNumber,education,parentsMobile,linkedIn,selected1,selected2,selected3,track,project,intern}
       switch(step){
           case 1:
               return (
@@ -72,7 +78,7 @@ handleChange = input => e =>{
                                 <Wowthings
                            nextStep={this.nextStep}
                            prevStep={this.prevStep}
-                           handleChange={this.handleChange}
+                          
                            values={values}/>
                            );
                             case 4:

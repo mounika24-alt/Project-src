@@ -1,53 +1,22 @@
-const Product = require('../models/product.model');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+let ProductSchema = new Schema({
+    firstName: {type: String, required: true, max: 100},
+    email: {type: String, required: true, max: 100},
+    mobileNumber: {type: String, required: true, max: 10},
+    education: {type: String, required: true, max:30 },
+    parentsMobileNumber:{type: String, required: false, max: 100},
+    linkedIn: {type: String, required: true, max: 100},
+    track: {type: String, required: true, max: 150},
+    bestProject: {type: String, required: true, max: 150},
+    whyIntern:  {type: String, required: true, max: 300},
+    elearning:  {type: String, enum:['extremelyPoor','poor','good','vGood','excellent']},
+    innovative: {type: String, enum:['extremelyPoor','poor','good','vGood','excellent']},
+    ability: {type: String, enum:['extremelyPoor','poor','good','vGood','excellent']}
+
+});
 
 
-//console.log("controller hit");
-//Simple version, without validation or sanitation
-exports.test = function (req, res) {
-    res.send('Greetings from the Test controller!');
-};
-
-exports.product_create = function (req, res) {
-
-    console.log("create method called");
-    let product = new Product(
-        {
-            //name: req.body.name,
-            //price: req.body.price
-
-            firstName: req.body.firstName,
-            email: req.body.email,
-            mobileNumber: req.body.mobileNumber,
-            education: req.body.education,
-            parentsMobileNumber: req.body.parentsMobileNumber,
-            linkedIn: req.body.linkedIn,
-            track: req.body.track,
-           bestProject: req.body.bestProject,
-            whyIntern:  req.body.whyIntern,
-            elearning:  req.body.elearning,
-            innovative: req.body.innovative,
-            ability: req.body.ability
-        }
-    );
-
-
-//product.save().then(() => console.log('meow'));
-
-
-    product.save(function (err) {
-        console.log("sadsadsad");   
-        if (err) {
-            return err;
-        }
-        res.send('Product Created successfully')
-    })
-
-    exports.product_details = function (req, res) {
-        product.findById(req.params.phone, function (err, product) {
-            if (err) return next(err);
-            res.send(product);
-        })
-    };
-
-
-};
+// Export the model
+module.exports = mongoose.model('Product', ProductSchema);
